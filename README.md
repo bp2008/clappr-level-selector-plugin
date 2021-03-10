@@ -40,8 +40,12 @@ var player = new Clappr.Player({
         1: 'Med', // 240kbps
         0: 'Low', // 120kbps
     },
-    labelCallback: function(playbackLevel, customLabel) {
-        return customLabel + playbackLevel.level.height+'p'; // High 720p
+    labelCallback: function (playbackLevel, customLabel)
+    {
+      if (playbackLevel.level.height && playbackLevel.level.height > 0)
+        return playbackLevel.level.height + 'p';
+      else
+        return parseInt(playbackLevel.level.bitrate / 1000) + " Kbps";
     }
   }
 });
