@@ -2,12 +2,13 @@ const path = require('path')
 const filename = 'level-selector.js'
 
 module.exports = {
+  devtool: 'source-map',
   entry: path.resolve(__dirname, 'index.js'),
   externals: {
-    clappr: {
-      amd: 'clappr',
-      commonjs: 'clappr',
-      commonjs2: 'clappr',
+    '@clappr/core': {
+      amd: '@clappr/core',
+      commonjs: '@clappr/core',
+      commonjs2: '@clappr/core',
       root: 'Clappr'
     }
   },
