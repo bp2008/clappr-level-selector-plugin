@@ -1,7 +1,7 @@
 {
   "name": "level-selector",
   "description": "A simple plugin for Clappr that adds support to manually select level on multi-bitrate streams.",
-  "version": "0.2.0",
+  "version": "0.4.3",
   "license": "MIT",
   "repository": "clappr/clappr-level-selector-plugin",
   "main": "dist/level-selector.js",
@@ -28,6 +28,10 @@
     {
       "name": "Bruno Torres",
       "email": "me@brunotorr.es"
+    },
+    {
+      "name": "Brian Pearce",
+      "url": "https://github.com/bp2008/clappr-level-selector-plugin"
     }
   ],
   "keywords": [
@@ -35,7 +39,7 @@
     "plugin"
   ],
   "peerDependencies": {
-    "clappr": "0.x"
+    "@clappr/player": "0.x"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -44,7 +48,7 @@
     "babel-plugin-transform-es2015-classes": "^6.24.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.1",
-    "clappr": "^0.2.92",
+    "@clappr/player": "^0.4.3",
     "css-loader": "^0.28.10",
     "eslint": "^4.18.2",
     "html-loader": "^0.5.5",

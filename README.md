@@ -2,16 +2,20 @@
 
 <img src="https://raw.githubusercontent.com/lucasmundim/clappr-level-selector-plugin/master/screenshot.png"/>
 
+## One-off fork
+
+I forked this to fix issues and make it work better with Clappr 0.4.x.  I'm not putting this into npm.  I don't want to become a plugin maintainer.
+
 ## Usage
 
-Add both Clappr and Level Selector plugin scripts to your HTML:
+Extract the src folder into your modern javascript project that is built with webpack, and import it along with Clappr 0.4.x.
 
-```html
-<head>
-  <script type="text/javascript" src="http://cdn.clappr.io/latest/clappr.min.js"></script>
-  <script type="text/javascript" src="dist/level-selector.js"></script>
-</head>
+```javascript
+import Clappr from '@clappr/player';
+import LevelSelectorPlugin from 'clappr-level-selector-plugin/main.js';
 ```
+
+(the `dist` folder should contain a pre-compiled release if you aren't using webpack or similar to build your scripts)
 
 Then just add `LevelSelector` into the list of plugins of your player instance:
 
@@ -22,13 +26,14 @@ var player = new Clappr.Player({
 });
 ```
 
-You can also customize the labels and title:
+You can customize the options by following this example:
 
 ```javascript
 var player = new Clappr.Player({
   source: "http://your.video/here.m3u8",
   plugins: [LevelSelector],
   levelSelectorConfig: {
+    assumeLevelChangesWillWork: true,
     title: 'Quality',
     labels: {
         2: 'High', // 500kbps
@@ -38,11 +43,13 @@ var player = new Clappr.Player({
     labelCallback: function(playbackLevel, customLabel) {
         return customLabel + playbackLevel.level.height+'p'; // High 720p
     }
-  },
+  }
 });
 ```
 
-And also transform available levels:
+Notably, the `assumeLevelChangesWillWork` option is my own addition to work around an issue where clappr's hlsjs playback was not triggering `PLAYBACK_LEVEL_SWITCH_END` when changing levels to or from "AUTO" in such a way that the actual effectiev level did not change.  Setting `assumeLevelChangesWillWork: true` will disable the red flashing state of the level selector button and cause the GUI state to update properly.
+
+You can also transform available levels:
 
 ```javascript
 var player = new Clappr.Player({
@@ -55,10 +62,26 @@ var player = new Clappr.Player({
 });
 ```
 
-*Note: There is a minified version served through CDNs too:*
-```html
-<script type="text/javascript"
-        src="//cdn.jsdelivr.net/gh/clappr/clappr-level-selector-plugin@latest/dist/level-selector.min.js"></script>
+## Building
+
+Get node.js. I have v12.14.1.
+
+In a command prompt at the root of the project, you need to download all the referenced packages, so run
+
+```
+npm install
+```
+
+Then to build, run 
+
+```
+npm run build
+```
+
+or
+
+```
+npm run release
 ```
 
 ## Compatibility
