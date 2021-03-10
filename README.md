@@ -51,7 +51,7 @@ var player = new Clappr.Player({
 });
 ```
 
-Notably, the `assumeLevelChangesWillWork` option is my own addition to work around an issue where clappr's hlsjs playback was not triggering `PLAYBACK_LEVEL_SWITCH_END` when changing levels to or from "AUTO" in such a way that the actual effectiev level did not change.  Setting `assumeLevelChangesWillWork: true` will disable the red flashing state of the level selector button and cause the GUI state to update properly.
+Notably, the `assumeLevelChangesWillWork` option is my own addition to work around an issue where clappr's hlsjs playback was not triggering `PLAYBACK_LEVEL_SWITCH_END` when changing levels to or from "AUTO" in such a way that the actual effective level did not change and the level selector GUI was visually broken.  Setting `assumeLevelChangesWillWork: true` will disable the red flashing state of the level selector button and cause the GUI state to update properly without waiting for `PLAYBACK_LEVEL_SWITCH_END`.
 
 You can also transform available levels:
 
