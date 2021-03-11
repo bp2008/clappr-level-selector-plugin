@@ -1,4 +1,4 @@
-import { Events, Styler, UICorePlugin, template } from '@clappr/core';
+import { Events, Styler, UICorePlugin, template } from '@clappr/player';
 import pluginHtml from './public/level-selector.html';
 import pluginStyle from './public/style.scss';
 
@@ -21,7 +21,7 @@ export default class LevelSelector extends UICorePlugin
 
 	static get version()
 	{
-		return "0.4.3.0";
+		return "0.4.3";
 	}
 
 	get name()

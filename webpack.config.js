@@ -5,10 +5,10 @@ module.exports = {
   devtool: 'source-map',
   entry: path.resolve(__dirname, 'index.js'),
   externals: {
-    '@clappr/core': {
-      amd: '@clappr/core',
-      commonjs: '@clappr/core',
-      commonjs2: '@clappr/core',
+    '@clappr/player': {
+      amd: '@clappr/player',
+      commonjs: '@clappr/player',
+      commonjs2: '@clappr/player',
       root: 'Clappr'
     }
   },
