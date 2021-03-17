@@ -11,14 +11,14 @@
     border: none;
     font-size: 12px;
     height: 100%;
-  cursor: pointer;
+    cursor: pointer;
 
     &:hover {
       color: #c9c9c9;
     }
 
     &.changing {
-      -webkit-animation: pulse 0.5s infinite alternate;
+      animation: pulse 0.5s infinite alternate;
     }
   }
 
@@ -27,7 +27,6 @@
     overflow-y: auto;
     list-style-type: none;
     position: absolute;
-    bottom: 100%;
     display: none;
     background-color: rgba(28,28,28,0.9);
     white-space: nowrap;
@@ -65,7 +64,7 @@
   }
 }
 
-@-webkit-keyframes pulse {
+@keyframes pulse {
   0% {color: #fff;}
   50% {color: #ff0101}
   100% {color: #B80000;}

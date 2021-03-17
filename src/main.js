@@ -120,7 +120,6 @@ export default class LevelSelector extends UICorePlugin
 			this.$el.html(this.template({ 'levels': this.levels, 'title': this.getTitle() }));
 			this.$el.append(style);
 			this.core.mediaControl.$('.media-control-right-panel').append(this.el);
-			this.$('.level_selector ul').css('max-height', this.core.el.offsetHeight * 0.8);
 			this.updateGUI();
 		}
 		return this;
@@ -212,6 +211,36 @@ export default class LevelSelector extends UICorePlugin
 	toggleContextMenu()
 	{
 		this.$('.level_selector ul').toggle();
+		this.positionMenu(this.$('.level_selector ul'));
+	}
+
+	positionMenu($menu)
+	{
+		if (!$menu.is(":visible"))
+			return;
+		let parent = this.$el.get(0);
+		let buttonW = this.$el.width();
+		let buttonH = this.$el.height();
+		let buttonX = 0;
+		let buttonY = 0;
+		while (parent && parent !== this.core.el)
+		{
+			buttonX += parent.offsetLeft;
+			buttonY += parent.offsetTop;
+			parent = parent.offsetParent;
+		}
+		let maxHeight = buttonY;
+		$menu.css('max-height', maxHeight + 'px');
+		let w = $menu.width();
+		let h = $menu.height();
+		let x = buttonX + ((buttonW - w) / 2);
+		let y = buttonY - h;
+		if (x + w > this.core.el.offsetWidth)
+			x = this.core.el.offsetWidth - w;
+		if (x < 0)
+			x = 0;
+		$menu.css('top', (y - buttonY) + 'px');
+		$menu.css('left', (x - buttonX) + 'px');
 	}
 
 	buttonElement()
