@@ -220,7 +220,6 @@ export default class LevelSelector extends UICorePlugin
 			return;
 		let parent = this.$el.get(0);
 		let buttonW = this.$el.width();
-		let buttonH = this.$el.height();
 		let buttonX = 0;
 		let buttonY = 0;
 		while (parent && parent !== this.core.el)
